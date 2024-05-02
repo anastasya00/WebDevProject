@@ -1,0 +1,126 @@
+.side-menu {
+    position: fixed;
+    z-index: 1000;
+    height: 100%;
+    width: 70px;
+    margin-left: auto;
+    background-color: #354A5F;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-bottom: 20px;
+    bottom: 0;
+    position: absolute;
+    z-index: 1001;
+}
+
+.material-symbols-outlined {
+    height: 60px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+.info .material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+.menu {
+    top: 0;
+    position: absolute;
+    padding-top: 19px;
+}
+
+.menu .material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+.menu button {
+  background-color: #354A5F;
+  color: #F1F5F8;
+  border: none;
+  position: relative;
+  z-index: 1000;
+}
+
+.menu_open_panel {
+  height: 100%;
+  left: -20px;
+  z-index: 100;
+  bottom: 0;
+  position: fixed;
+  width: 50%;
+  transition: transform 0.3s;
+  transform: translateX(-100%);
+  background-color: #354A5F;
+}
+
+.filter {
+  position: fixed;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background-color: rgb(53 74 95 / 75%);
+  transition: opacity 0.2s;
+  width: 100%;
+  display: none;
+}
+
+.filter.visible {
+  display: block;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.links_open_panel {
+  position: absolute;
+  padding-left: 150px;
+  padding-top: 40px;
+  width: 700px;
+}
+
+.sublinks_open_panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-accordion>.mat-expansion-panel-spacing:last-child, .mat-accordion>*:last-child:not(.mat-expansion-panel) .mat-expansion-panel-spacing {
+  background-color: #354A5F !important;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  background-color: #354A5F !important;
+  border: none;
+}
+
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+  background-color: #354A5F !important;
+}
+
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+  color: #F1F5F8;
+  font-weight: 400;
+}

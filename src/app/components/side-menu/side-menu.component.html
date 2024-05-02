@@ -1,0 +1,157 @@
+<div class="side-menu">
+    <div class="menu">
+        <button (click)="togglePanel()">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        
+        <div class="filter" [ngClass]="{'visible': isPanelOpen}"></div>
+        <div class="menu_open_panel" [ngClass]="{'open': isPanelOpen}">
+            <div class="links_open_panel">
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Занятия</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="sublinks_open_panel">
+                        <a>Подпункт1</a>
+                        <a>Подпункт2</a>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Противодействие коррупции</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="sublinks_open_panel">
+                        <a>Нормативные правовые и иные акты в сфере противодействия коррупции</a>
+                        <a>Антикоррупционная экспертиза</a>
+                        <a>Методические материалы</a>
+                        <a>Формы документов, связанных с противодействием коррупции, для заполнения</a>
+                        <a>Сведения о доходах, расходах, об имуществе и обязательствах имущественного характера</a>
+                        <a>Комиссия по соблюдению требований к служебному поведению и урегулированию конфликта интересов (аттестационная комиссия)</a>
+                        <a>Обратная связь для сообщений о фактах коррупции</a>
+                        <a>Информационные материалы</a>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Информационная безопасноть</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="sublinks_open_panel">
+                        <a>Локальные нормативные акты в сфере обеспечения информационной безопасности обучающихся</a>
+                        <a>Нормативное регулирование</a>
+                        <a>Педагогическим работникам</a>
+                        <a>Обучающимся</a>
+                        <a>Родителям</a>
+                        <a>Детские безопасные сайты</a>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Организация питания</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="sublinks_open_panel">
+                        <a>Условия питания обучающихся (воспитанников), в том числе для инвалидов и лиц с ограниченными возможностями здоровья</a>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Формы обучения</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="sublinks_open_panel">
+                        <a>Подпункт1</a>
+                        <a>Подпункт2</a>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Руководство</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Рабочая воспитательная программа</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="sublinks_open_panel">
+                        <a>Анализ достижений</a>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Ссылки на официальные сайты</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="sublinks_open_panel">
+                        <a>Подпункт1</a>
+                        <a>Подпункт2</a>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Охрана труда</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                        (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Образование</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="sublinks_open_panel">
+                        <a>Подпункт1</a>
+                        <a>Подпункт2</a>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel" [ngClass]="{'open': isPanelOpen}">   
+        <a href="http://localhost:4200/"><span class="material-symbols-outlined">home</span></a>
+        <a href="http://localhost:4200/educational-programs"><span class="material-symbols-outlined">book</span></a>
+        <a href="http://localhost:4200/admin-authorization"><span class="material-symbols-outlined">admin_panel_settings</span></a>
+        <a href="http://localhost:4200/contact"><span class="material-symbols-outlined">location_on</span></a>
+        <a href="http://localhost:4200/news"><span class="material-symbols-outlined">newspaper</span></a>
+        <a href="http://localhost:4200/galery"><span class="material-symbols-outlined">add_photo_alternate</span></a>
+        <a href="http://localhost:4200/info"><span class="material-symbols-outlined">call_quality</span></a>
+        <div class="info">
+            <a href="http://localhost:4200/news"><span class="material-symbols-outlined">info</span></a>
+        </div>
+    </div>
+</div>

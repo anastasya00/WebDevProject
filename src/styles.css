@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #D4E4E5;
+    margin: 0;
+    font-family: "Roboto"
+}
+
+.container {
+    width: 1600px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0; 
+}
+
+a {
+    color: #F1F5F8;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+}
+
+h1 {
+    font-size: 96px;
+    font-weight: 900;
+    color: #2B3D4F;
+}
+
+h3 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 500;
+    color: #354A5F;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
