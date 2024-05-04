@@ -10,6 +10,8 @@ import { GaleryComponent } from './components/galery/galery.component';
 import { InfoComponent } from './components/info/info.component';
 import { MapComponent } from './components/map/map.component';
 import { NewsComponent } from './components/news/news.component';
+import { AdminPanelModule } from './components/admin-panel/admin-panel.module';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -20,6 +22,11 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent },
   { path: 'map', component: MapComponent },
   { path: 'news', component: NewsComponent },
+  { 
+    path: 'admin',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./components/admin-panel/admin-panel.module').then((m) => m.AdminPanelModule)
+  },
 
   { path: '**', component: MainPageComponent }
 ];

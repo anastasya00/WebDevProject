@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { Route } from '@angular/router';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -9,13 +10,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/UI/header/header.component';
 import { FooterComponent } from './components/UI/footer/footer.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
-import { Route } from '@angular/router';
 import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
 import { AdminAuthorizationComponent } from './components/admin-authorization/admin-authorization.component';
 import { MapComponent } from './components/map/map.component';
@@ -49,7 +51,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatExpansionModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),

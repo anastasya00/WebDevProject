@@ -1,0 +1,7 @@
+.admin_home {
+    color: red;
+    font-size: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

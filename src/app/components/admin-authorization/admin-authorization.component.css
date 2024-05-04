@@ -48,7 +48,14 @@ section {
     width: 120px;
 }
 
-.example-button-row[_ngcontent-ng-c1664870727] .mat-mdc-button-base[_ngcontent-ng-c1664870727] {
+.example-button-row[_ngcontent-ng-c1811575275] .mat-mdc-button-base[_ngcontent-ng-c1811575275] {
     width: 200px !important;
     color: #354A5F;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
