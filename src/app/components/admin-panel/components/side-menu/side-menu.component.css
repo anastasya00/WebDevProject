@@ -4,7 +4,7 @@
     height: 100%;
     width: 70px;
     margin-left: auto;
-    background-color: #354A5F;
+    background-color: #813e3e;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -57,7 +57,7 @@
 }
 
 .menu button {
-  background-color: #354A5F;
+  background-color: #813e3e;
   color: #F1F5F8;
   border: none;
   position: relative;
@@ -73,7 +73,7 @@
   width: 50%;
   transition: transform 0.3s;
   transform: translateX(-100%);
-  background-color: #354A5F;
+  background-color: #813e3e;
 }
 
 .filter {
@@ -108,27 +108,19 @@
 }
 
 .mat-accordion>.mat-expansion-panel-spacing:last-child, .mat-accordion>*:last-child:not(.mat-expansion-panel) .mat-expansion-panel-spacing {
-  background-color: #354A5F !important;
+  background-color: #813e3e !important;
 }
 
 .mat-accordion .mat-expansion-panel:last-of-type {
-  background-color: #354A5F !important;
+  background-color: #813e3e !important;
   border: none;
 }
 
 .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
-  background-color: #354A5F !important;
+  background-color: #813e3e !important;
 }
 
 .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
   color: #F1F5F8;
   font-weight: 400;
-}
-
-.mat-accordion .mat-expansion-panel:not(.mat-expanded), .mat-accordion .mat-expansion-panel:not(.mat-expansion-panel-spacing) {
-  background-color: #354A5F;
-}
-
-.mat-expansion-panel:not([class*=mat-elevation-z]) {
-  background-color: #354A5F;
 }
