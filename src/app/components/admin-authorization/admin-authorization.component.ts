@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './admin-authorization.component.css'
 })
 export class AdminAuthorizationComponent {
-
+  hide = true;
 }

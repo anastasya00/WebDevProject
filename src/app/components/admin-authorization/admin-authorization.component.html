@@ -1,1 +1,25 @@
+<div class="authorization">
+    <h2>Авторизация</h2>
 
+    <mat-form-field>
+        <mat-label>Login</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <div class="example-container">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+    </div>
+
+    <section>
+        <div class="example-button-row">
+          <button mat-button color="primary">Войти</button>
+        </div>
+    </section>
+
+</div>

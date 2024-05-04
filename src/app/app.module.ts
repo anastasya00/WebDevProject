@@ -5,6 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,7 +46,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [
     provideClientHydration(),

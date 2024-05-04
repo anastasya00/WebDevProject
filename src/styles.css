@@ -33,11 +33,18 @@ h1 {
     color: #2B3D4F;
 }
 
+h2 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #354A5F;
+}
+
 h3 {
     font-size: 18px;
     margin: 0;
     font-weight: 500;
     color: #354A5F;
 }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

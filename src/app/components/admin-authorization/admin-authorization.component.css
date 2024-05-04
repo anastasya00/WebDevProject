@@ -1,0 +1,54 @@
+h2 {
+    margin: 0;
+    padding-bottom: 50px;
+}
+
+.authorization {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mat-mdc-form-field {
+    width: 248px !important;
+}
+
+section {
+    display: table;
+}
+  
+.example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+}
+  
+.example-button-row {
+    display: table-cell;
+    max-width: 600px;
+}
+  
+.example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+}
+  
+.example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+  
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+.example-button-row[_ngcontent-ng-c1664870727] .mat-mdc-button-base[_ngcontent-ng-c1664870727] {
+    width: 200px !important;
+    color: #354A5F;
+}
