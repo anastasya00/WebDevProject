@@ -1,0 +1,61 @@
+h2 {
+    padding-top: 60px;
+    padding-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #F1F5F8;
+    font-weight: 400;
+}
+
+li {
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #F1F5F8;
+    font-size: 20px;
+}
+
+.header_programs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.program_1 {
+    background-image: url("/assets/images/programm1.jpg");
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 !important;
+}
+
+.program_1::before:hover {
+    background-color: #F1F5F8;
+}
+
+.program_2 {
+    background-image: url("/assets/images/programm2.jpg");
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 !important;
+}
+
+.program_3 {
+    background-image: url("/assets/images/programm3.jpg");
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 !important;
+}
+
+.programs {
+    padding-top: 250px;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    margin-left: 70px;
+}
+
+.programs div {
+    width: 34%;
+}

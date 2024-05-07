@@ -1,1 +1,18 @@
+<div class="container posts">
+    <h2>Новости</h2>
+    <div class="news_post" *ngFor="let post of posts">
 
+        <div class="news_data">
+                <div>{{ post.data }}</div>
+        </div>
+
+        <div class="news_text">
+                <div>{{ post.text }}</div>
+        </div>
+
+        <div class="img_news" #slider>
+            <div *ngFor="let link of post.links; let i = index" class="image" [style.backgroundImage]="'url(' + link + ')'"></div>
+        </div>
+        
+    </div>
+</div>
