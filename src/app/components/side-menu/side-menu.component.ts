@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { title } from 'node:process';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-side-menu',
@@ -34,7 +34,7 @@ export class SideMenuComponent {
      },
     { title: 'Организация питания', sublinks: ['Условия питания обучающихся (воспитанников), в том числе для инвалидов и лиц с ограниченными возможностями здоровья'] },
     { title: 'Формы обучения', sublinks: ['Подпункт1', 'Подпункт2'] },
-    { title: 'Руководство' },
+    { title: 'Руководство', sublinks: ['Руководство']  },
     { title: 'Рабочая воспитательная программа', sublinks: ['Анализ достижений'] },
     { title: 'Ссылки на официальные сайты', sublinks: ['Подпункт1', 'Подпункт2'] },
     { title: 'Охрана труда' },

@@ -1,1 +1,187 @@
+<div class="container">
+    <div class="blocks_info" style="margin: 0 !important;">
 
+        <h2>Об образовательной организации</h2>
+        <div class="info_texts">
+
+            <div class="info_text">
+                <p>Полное и сокращенное наименование образовательной организации:</p>
+                <p>Муниципальное бюджетное образовательное учреждение дополнительного образования "Центр дополнительного образования" города Искитима Новосибирской области (МБОУ ДО ЦДО)</p>
+            </div>
+
+            <div class="info_text">
+                <p>Дата создания образовательной организации:</p>
+                <p style="padding-left: 57px;">19.10.2000</p>
+            </div>
+
+            <div class="info_text">
+                <p>Тип образовательной организации:</p>
+                <p style="padding-left: 143px;">учреждения дополнительного образования детей</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="blocks_info">
+
+        <h2 id="Контакты">Контакты</h2>
+        <div class="info_texts">
+
+            <div class="info_text">
+                <p>Контактный телефон:</p>
+                <a style="padding-left: 250px;">+7(38343) 2-03-34</a>
+            </div>
+
+            <div class="info_text">
+                <p>Адрес электронной почты:</p>
+                <a style="padding-left: 212px;">cdo_isk&#64;mail.ru</a>
+            </div>
+
+            <div class="info_text">
+                <p>Адрес официального сайта:</p>
+                <a style="padding-left: 204px;" href="https://cdoi.ru" target="_blank">https://cdoi.ru</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="blocks_info">
+
+        <h2>Противодействие коррупции</h2>
+
+        <h2 class="header_block_corruption" id="Нормативные правовые и иные акты в сфере противодействия коррупции">Нормативные правовые и иные акты в сфере противодействия коррупции</h2>
+        <div class="info_texts">
+            <div *ngFor="let category of categories">
+                <h3>{{ category.title }}</h3>
+        
+                <ng-container *ngIf="category.no_links; else linkBlock">
+                    <p style="margin: 0; padding-top: 10px;">{{ category.no_links }}</p>
+                </ng-container>
+        
+                <ng-template #linkBlock>
+                    <div class="info_links">
+                        <a *ngFor="let link of category.links">{{ link }}</a>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+
+        <h2 class="header_block_corruption" id="Антикоррупционная экспертиза">Антикоррупционная экспертиза</h2>
+        <div class="info_links">
+            <a href="https://regulation.gov.ru/" target="_blank">https://regulation.gov.ru/</a>
+        </div>
+
+        <h2 class="header_block_corruption" id="Методические материалы">Методические материалы</h2>
+        <div class="info_texts">
+            <h3>Методические материалы по вопросам противодействия коррупции</h3>
+            <div class="info_links">
+                <a href="https://mintrud.gov.ru/ministry/programms/anticorruption" target="_blank">Методические рекомендации, обзоры, разъяснения и иные документы, подготовленные Минтрудом России, размещенным на сайте Минтруда России</a>
+            </div>
+        </div>
+
+        <h2 class="header_block_corruption" id="Формы документов, связанных с противодействием коррупции, для заполнения">Формы документов, связанных с противодействием коррупции, для заполнения</h2>
+        <div class="info_texts">
+            <h3>Образцы форм документов, связанных с противодействием коррупции, для заполнения</h3>
+            <div class="info_links" *ngFor="let form of link_form_doc">
+                <a href="{{ form.link }}" target="_blank">{{ form.title }}</a>
+            </div>
+
+            <h3>Специальное программное обеспечение «Справки БК»</h3>
+            <div class="info_links">
+                <a href="http://www.kremlin.ru/structure/additional/12" target="_blank">Специальное программное обеспечение «Справки БК»</a>
+            </div>
+        </div>
+
+        <h2 class="header_block_corruption" id="Сведения о доходах, расходах, об имуществе и обязательствах имущественного характера">Сведения о доходах, расходах, об имуществе и обязательствах имущественного характера</h2>
+        <div class="info_texts">
+            <h3>Курдюмова Марина Исаметовна (Директор МБОУ ДО ЦДО) - 2022 год</h3>
+            <div class="info_links">
+                <a href="https://cdoi.ru/sveden/files/e6a7a09ee1ec8cdf8a55c44a749edf4e.pdf" target="_blank">Ссылка на размещённые сведения на стороннем сайте</a>
+            </div>
+        </div>
+
+        <h2 class="header_block_corruption" id="Комиссия по соблюдению требований к служебному поведению и урегулированию конфликта интересов (аттестационная комиссия)">Комиссия по соблюдению требований к служебному поведению и урегулированию конфликта интересов (аттестационная комиссия)</h2>
+        <div class="info_texts">
+            <h3>Сведения о состоявшихся заседаниях комиссии, принятых решениях</h3>
+            <div class="info_links">
+                <p>Заседания не проводились</p>
+            </div>
+        </div>
+
+        <h2 class="header_block_corruption" id="Обратная связь для сообщений о фактах коррупции">Обратная связь для сообщений о фактах коррупции</h2>
+        <div class="info_texts">
+            <h3>Нормативные правовые акты, регламентирующие порядок рассмотрения обращений граждан</h3>
+            <div class="info_links">
+                <a href="https://www.cdoi.ru/sveden/files/589da11a63363046704ebb7c8a6fdf05_0.pdf" target="_blank">Нормативный правовой акт, регламентирующий порядок рассмотрения обращений граждан</a>
+            </div>
+
+            <h3>Способы для граждан и юридических лиц беспрепятственно направлять свои обращения</h3>
+            <div class="info_links">
+    
+                <div class="info_text">
+                    <p>Электронная почта организации:</p>
+                    <p style="padding-left: 100px;">cdo_isk&#64;mail.ru</p>
+                </div>
+
+                <div class="info_text">
+                    <p>Телефоны:</p>
+                    <p style="padding-left: 267px;">(383)432 46 12</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="header_block_corruption" id="Информационные материалы">Информационные материалы</h2>
+        <div class="info_texts">
+            <h3>Информация о поступивших обращениях граждан</h3>
+            <div class="info_links"><p>Обращений не поступало</p></div>
+        </div>
+        
+    </div>
+
+
+
+    <div class="blocks_info">
+
+        <h2 id="Руководство">Руководство. Педагогический (научно-педагогический) состав</h2>
+        <div class="info_texts" *ngFor="let guide of guides">
+            <h3>{{ guide.title }}</h3>
+            <div class="info_links" *ngFor="let name of guide.name; let i = index">
+
+                <div class="header_name">
+                    <h3 style="color: #F1F5F8; padding: 0;">{{ name }}</h3>
+                </div>
+
+                <div class="guides_block" style="display: flex; flex-direction: row;">
+                    <div class="img_guides">
+                        <div class="img_guide" style="width: 250px; height: 330px;" style="background-image: url('{{ guide.img[i] }}');"></div>
+                    </div>
+
+                    <div class="info_guides">
+                        <div class="info_guide">
+                            <p style="margin-bottom: 5px;"><strong>Должность:</strong> </p>
+                            <p style="margin-top: 0;">{{ guide.post[i] }}</p>
+                            <p><strong>Телефон:</strong> {{ guide.phone[i] }}</p>
+                            <p><strong>Email:</strong> <a href="mailto:cdo_isk&#64;mail.ru"> cdo_isk&#64;mail.ru</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <h2 style="margin-top: 40px;">Персональный состав педагогических работников по уровням образования</h2>
+        <div class="info_texts" *ngFor="let guide of guides_dop">
+            <h3 style="padding-bottom: 30px;">{{ guide.title }}</h3>
+            <div class="name_guides_dop">
+                <a style="padding-bottom: 10px;" *ngFor="let name of guide.names">{{ name }}</a>
+            </div>
+        </div>
+        
+
+    
+    </div>
+    
+    <div style="height: 250px;"></div>
+
+</div>

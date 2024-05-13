@@ -8,31 +8,32 @@
         <div class="menu_open_panel" [ngClass]="{'open': isPanelOpen}">
             <div class="links_open_panel">
 
-                <mat-accordion>
-                    <mat-expansion-panel *ngFor="let panel of panels" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>{{ panel.title }}</mat-panel-title>
-                      </mat-expansion-panel-header>
-                      <div class="sublinks_open_panel" *ngIf="panel.sublinks">
-                        <a *ngFor="let sublink of panel.sublinks">{{ sublink }}</a>
-                      </div>
-                    </mat-expansion-panel>
-                  </mat-accordion>
+              <mat-accordion>
+                <mat-expansion-panel *ngFor="let panel of panels" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>{{ panel.title }}</mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="sublinks_open_panel" *ngIf="panel.sublinks">
+                    <a *ngFor="let sublink of panel.sublinks" href="/info#{{ sublink }}">{{ sublink }}</a>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>              
+            
                 
             </div>
         </div>
     </div>
 
     <div class="panel" [ngClass]="{'open': isPanelOpen}">   
-        <a href="http://localhost:4200/" title="Главная"><span class="material-symbols-outlined">home</span></a>
-        <a href="http://localhost:4200/educational-programs" title="Программы"><span class="material-symbols-outlined">book</span></a>
-        <a href="http://localhost:4200/admin-authorization" title="Авторизация админа"><span class="material-symbols-outlined">admin_panel_settings</span></a>
-        <a href="http://localhost:4200/map" title="Карта"><span class="material-symbols-outlined">location_on</span></a>
-        <a href="http://localhost:4200/news" title="Новости"><span class="material-symbols-outlined">newspaper</span></a>
-        <a href="http://localhost:4200/galery" title="Галерея"><span class="material-symbols-outlined">add_photo_alternate</span></a>
-        <a href="http://localhost:4200/info" title="Контакты"><span class="material-symbols-outlined">call_quality</span></a>
+        <a [routerLink]="['/']" title="Главная"><span class="material-symbols-outlined">home</span></a>
+        <a [routerLink]="['/educational-programs']" title="Программы"><span class="material-symbols-outlined">book</span></a>
+        <a [routerLink]="['/admin-authorization']" title="Авторизация админа"><span class="material-symbols-outlined">admin_panel_settings</span></a>
+        <a [routerLink]="['/map']" title="Карта"><span class="material-symbols-outlined">location_on</span></a>
+        <a [routerLink]="['/news']" title="Новости"><span class="material-symbols-outlined">newspaper</span></a>
+        <a [routerLink]="['/galery']" title="Галерея"><span class="material-symbols-outlined">add_photo_alternate</span></a>
+        <a [routerLink]="['/map']" title="Контакты"><span class="material-symbols-outlined">call_quality</span></a>
         <div class="info">
-            <a href="http://localhost:4200/news" title="Инфо"><span class="material-symbols-outlined">info</span></a>
+            <a [routerLink]="['/info']" title="Инфо"><span class="material-symbols-outlined">info</span></a>
         </div>
     </div>
 </div>

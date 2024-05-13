@@ -1,0 +1,76 @@
+h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+h3 {
+    font-weight: 500;
+    padding-top: 30px;
+}
+
+a {
+    color: red;
+    padding-top: px;
+}
+
+a:hover {
+    color: #354A5F;
+}
+
+.blocks_info {
+    border: 2px solid #354A5F;
+    top: 200px;
+    position: relative;
+    border-radius: 10px;
+    padding: 40px;
+    color: #354A5F;
+    font-size: 16px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.info_text {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.info_links {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header_block_corruption {
+    font-weight: 500;
+    font-size: 22px;
+    padding-top: 60px;
+}
+
+.img_guide {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.info_guide {
+    margin-top: 30px;
+    margin-left: 30px;
+    height: 330px;
+}
+
+.header_name {
+    background-color: #354a5f59;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    z-index: 100;
+    width: 101.5%;
+    right: 40px;
+    padding-left: 40px;
+}
+
+.name_guides_dop {
+    display: flex;
+    flex-direction: column;
+}

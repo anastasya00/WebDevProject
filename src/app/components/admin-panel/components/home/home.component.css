@@ -1,7 +1,16 @@
 .admin_home {
-    color: red;
     font-size: 80px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    align-self: center;
+    height: 100%;
+}
+
+.admin_buttons {
+    font-size: 34px;
+    margin: 10px;
+    height: 72px !important;
+    width: 80% !important;
 }
