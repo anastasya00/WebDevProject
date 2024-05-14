@@ -11,6 +11,9 @@ import { InfoComponent } from './components/info/info.component';
 import { MapComponent } from './components/map/map.component';
 import { NewsComponent } from './components/news/news.component';
 import { AdminPanelModule } from './components/admin-panel/admin-panel.module';
+import { AppliedComputerScienceComponent } from './components/applied-computer-science/applied-computer-science.component';
+import { EconomistComponent } from './components/economist/economist.component';
+import { EntertainingComputerScienceComponent } from './components/entertaining-computer-science/entertaining-computer-science.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -21,6 +24,9 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent },
   { path: 'map', component: MapComponent },
   { path: 'news', component: NewsComponent },
+  { path: 'applied-computer-science', component: AppliedComputerScienceComponent},
+  { path: 'economist', component: EconomistComponent},
+  { path: 'entertaining-computer-science', component: EntertainingComputerScienceComponent},
   { 
     path: 'admin',
     loadChildren: () => import('./components/admin-panel/admin-panel.module').then((m) => m.AdminPanelModule)

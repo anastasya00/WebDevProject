@@ -1,0 +1,24 @@
+.block_program {
+    position: absolute;
+    margin-top: 150px;
+    width: 1600px;
+}
+
+.header_program_1 {
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.program_1_info {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+a {
+    color: red;
+}
+
+a:hover {
+    color: #354A5F;
+}

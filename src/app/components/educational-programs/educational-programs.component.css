@@ -1,6 +1,6 @@
 h2 {
     padding-top: 60px;
-    padding-left: 20px;
+    padding-left: 40px;
     margin-top: 0;
     margin-bottom: 0;
     color: #F1F5F8;
@@ -9,7 +9,7 @@ h2 {
 
 li {
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 40px;
     color: #F1F5F8;
     font-size: 20px;
 }
@@ -26,10 +26,8 @@ li {
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0 !important;
-}
-
-.program_1::before:hover {
-    background-color: #F1F5F8;
+    opacity: 90%;
+    cursor: pointer;
 }
 
 .program_2 {
@@ -38,6 +36,8 @@ li {
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0 !important;
+    opacity: 90%;
+    cursor: pointer;
 }
 
 .program_3 {
@@ -46,7 +46,22 @@ li {
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0 !important;
+    opacity: 90%;
+    cursor: pointer;
 }
+
+
+.program_1:hover, .program_2:hover, .program_3:hover {
+    background-color: #F1F5F8;
+    background-image: none;
+    h2 {
+        color: #354A5F;
+    }
+    li {
+        color: #354A5F;
+    }
+}
+
 
 .programs {
     padding-top: 250px;

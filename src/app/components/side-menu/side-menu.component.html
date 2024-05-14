@@ -1,39 +1,39 @@
 <div class="side-menu">
-    <div class="menu">
-        <button (click)="togglePanel()">
-            <span class="material-symbols-outlined">menu</span>
-        </button>
-        
-        <div class="filter" [ngClass]="{'visible': isPanelOpen}"></div>
-        <div class="menu_open_panel" [ngClass]="{'open': isPanelOpen}">
-            <div class="links_open_panel">
+  <div class="menu">
+      <button (click)="togglePanel()">
+          <span class="material-symbols-outlined">menu</span>
+      </button>
+      
+      <div class="filter" [ngClass]="{'visible': isPanelOpen}"></div>
+      <div class="menu_open_panel" [ngClass]="{'open': isPanelOpen}">
+          <div class="links_open_panel">
 
-              <mat-accordion>
-                <mat-expansion-panel *ngFor="let panel of panels" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>{{ panel.title }}</mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <div class="sublinks_open_panel" *ngIf="panel.sublinks">
-                    <a *ngFor="let sublink of panel.sublinks" href="/info#{{ sublink }}">{{ sublink }}</a>
-                  </div>
-                </mat-expansion-panel>
-              </mat-accordion>              
-            
-                
-            </div>
-        </div>
-    </div>
+            <mat-accordion>
+              <mat-expansion-panel *ngFor="let panel of panels" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>{{ panel.title }}</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="sublinks_open_panel" *ngIf="panel.sublinks">
+                  <a *ngFor="let sublink of panel.sublinks" href="/info#{{ sublink }}">{{ sublink }}</a>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>              
+          
+              
+          </div>
+      </div>
+  </div>
 
-    <div class="panel" [ngClass]="{'open': isPanelOpen}">   
-        <a [routerLink]="['/']" title="Главная"><span class="material-symbols-outlined">home</span></a>
-        <a [routerLink]="['/educational-programs']" title="Программы"><span class="material-symbols-outlined">book</span></a>
-        <a [routerLink]="['/admin-authorization']" title="Авторизация админа"><span class="material-symbols-outlined">admin_panel_settings</span></a>
-        <a [routerLink]="['/map']" title="Карта"><span class="material-symbols-outlined">location_on</span></a>
-        <a [routerLink]="['/news']" title="Новости"><span class="material-symbols-outlined">newspaper</span></a>
-        <a [routerLink]="['/galery']" title="Галерея"><span class="material-symbols-outlined">add_photo_alternate</span></a>
-        <a href="/map#contact_help" title="Контакты"><span class="material-symbols-outlined">call_quality</span></a>
-        <div class="info">
-            <a [routerLink]="['/info']" title="Инфо"><span class="material-symbols-outlined">info</span></a>
-        </div>
-    </div>
+  <div class="panel" [ngClass]="{'open': isPanelOpen}">   
+      <a [routerLink]="['/']" title="Главная"><span class="material-symbols-outlined">home</span></a>
+      <a [routerLink]="['/educational-programs']" title="Программы"><span class="material-symbols-outlined">book</span></a>
+      <a [routerLink]="['/admin-authorization']" title="Авторизация админа"><span class="material-symbols-outlined">admin_panel_settings</span></a>
+      <a [routerLink]="['/map']" title="Карта"><span class="material-symbols-outlined">location_on</span></a>
+      <a [routerLink]="['/news']" title="Новости"><span class="material-symbols-outlined">newspaper</span></a>
+      <a [routerLink]="['/galery']" title="Галерея"><span class="material-symbols-outlined">add_photo_alternate</span></a>
+      <a href="/map#contact_help" title="Контакты"><span class="material-symbols-outlined">call_quality</span></a>
+      <div class="info">
+          <a [routerLink]="['/info']" title="Инфо"><span class="material-symbols-outlined">info</span></a>
+      </div>
+  </div>
 </div>
