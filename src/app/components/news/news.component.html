@@ -8,9 +8,16 @@
         </div>
 
         <div class="news_text">
-            <div>{{ post.title }}</div>
             <div>{{ post.content }}</div>
         </div>
         
+        <div class="images">
+            <img class="img" *ngFor="let img of post.images" [src]="img.link">
+        </div>
+
     </div>
+
+    <div style="height: 100px;"></div>
 </div>
+
+
