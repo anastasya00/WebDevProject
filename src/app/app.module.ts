@@ -26,6 +26,7 @@ import { GaleryComponent } from './components/galery/galery.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { InfoComponent } from './components/info/info.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),
