@@ -1,1 +1,9 @@
+<div>
+    <h2>Галерея</h2>
 
+    <div>
+        <div *ngFor="let image of images">
+            <img [src]="image.link">
+        </div>
+    </div>
+</div>
