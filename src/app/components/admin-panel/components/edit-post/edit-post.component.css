@@ -10,3 +10,74 @@ h2 {
     flex-direction: column;
     align-items: center;
 }
+
+.news_post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: 2px solid;
+    border-radius: 10px;
+    color: #354a5f;
+    margin-bottom: 50px;
+}
+
+.posts {
+    margin-bottom: 400px;
+    width: 900px;
+}
+
+.news_data {
+    opacity: 70%;
+}
+
+.news_text {
+    padding-top: 20px;
+    margin: 0;
+    padding-bottom: 20px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    position: relative;
+}
+
+a::after {
+    content: attr(title);
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.1s;
+}
+
+a:hover::after {
+    opacity: 1;
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.img {
+    display: block;
+    width: 380px;
+    margin: 5px;
+}
+
+.header_search, .header_search mat-form-field {
+    width: 100% !important;
+}
+

@@ -20,3 +20,9 @@ h2 {
 .example-full-width {
     width: 100%;
 }
+
+button {
+    width: 100% !important;
+    background-color: #354A5F !important;
+    color: #F1F5F8 !important;
+}

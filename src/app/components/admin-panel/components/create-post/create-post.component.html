@@ -3,7 +3,7 @@
     <h2>Создать пост</h2>
 
     <form [formGroup]="postForm" class="example-form">
-      <mat-form-field>
+      <mat-form-field style="width: 100%;">
         <mat-label>{{ currentDate }}</mat-label>
         <input
           formControlName="date"
@@ -31,6 +31,9 @@
             value=" "
           ></textarea>
         </mat-form-field>
+
+        <button mat-raised-button (click)="openDialog('0ms', '0ms')">Создать</button>
+
       </form>
   </div>
 </div>

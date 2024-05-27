@@ -1,12 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Post } from '../../../../core/models/models';
+import { ApiService } from '../../../../core/api/api.service';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-edit-post',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './edit-post.component.html',
   styleUrl: './edit-post.component.css'
 })
-export class EditPostComponent {
+export class EditPostComponent implements OnInit {
+  posts: Post[] = [];
+  filteredPosts: Post[] = [];
+  searchForm!: FormGroup;
 
+
+  constructor(private api: ApiService) { }
+
+  public searchPosts(value: string) {
+    this.filteredPosts = this.posts.filter(post =>
+					post?.content.toLowerCase().includes(value.toLowerCase())
+				);
+  }
+
+  ngOnInit(): void {
+    this.api.getPosts().subscribe(posts => {
+      this.posts = posts;
+      for (let post of this.posts) {
+        this.api.getPostImages(post.id).subscribe(images => {
+          post.images = images;
+        });
+      }
+    });
+
+    this.searchForm = new FormGroup({
+      search: new FormControl()
+    });
+
+    this.filteredPosts = this.posts;
+    
+  }
 }

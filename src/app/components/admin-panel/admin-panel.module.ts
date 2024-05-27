@@ -13,7 +13,6 @@ import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
-import { FooterComponent } from './components/UI/footer/footer.component';
 import { HeaderComponent } from './components/UI/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
@@ -22,7 +21,6 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 
 @NgModule({
   declarations: [
-    FooterComponent,
     HeaderComponent,
     HomeComponent,
     AdminDashboardComponent,
