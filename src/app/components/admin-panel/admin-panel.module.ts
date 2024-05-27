@@ -9,6 +9,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import { FooterComponent } from './components/UI/footer/footer.component';
 import { HeaderComponent } from './components/UI/header/header.component';
@@ -33,7 +36,9 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     MatExpansionModule,
     MatSelectModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule,
+    MatDatepickerModule
   ]
 })
 export class AdminPanelModule { }

@@ -1,7 +1,8 @@
 <div class="admin_home">
     <h2>Панель администратора</h2>
 
-    <button mat-raised-button color="primary">Создать пост</button>
-    <button mat-raised-button color="primary">Удалить пост</button>
-    <button mat-raised-button color="primary">Редактировать пост</button>
+    <button [routerLink]="['../create-post']" title="Создать пост" class="admin_buttons" mat-raised-button color="primary">Создать пост</button>
+    <button [routerLink]="['../delete-post']" title="Удалить пост" class="admin_buttons" mat-raised-button color="primary">Удалить пост</button>
+    <button [routerLink]="['../edit-post']" title="Редактировать пост" class="admin_buttons" mat-raised-button color="primary">Редактировать пост</button>
+
 </div>

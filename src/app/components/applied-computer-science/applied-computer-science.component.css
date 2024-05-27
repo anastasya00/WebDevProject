@@ -17,6 +17,7 @@ h2 {
     display: flex;
     flex-direction: row;
     margin-top: 40px;
+    justify-content: space-evenly;
 }
 
 a {
@@ -32,7 +33,7 @@ a:hover {
 }
 
 .slide_img {
-    margin-left: 350px;
+    margin-left: 410px;
 }
 
 .description_header {

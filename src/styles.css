@@ -46,3 +46,14 @@ h3 {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@media only screen and (max-width: 1000px) {
+    .links_open_panel {
+        width: 300px !important;
+    }
+
+    .links_open_panel {
+        padding-left: 100px !important;
+    }
+}

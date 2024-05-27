@@ -1,0 +1,12 @@
+h2 {
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+
+.delete_post {
+    top: 200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

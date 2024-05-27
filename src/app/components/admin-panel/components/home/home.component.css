@@ -9,8 +9,10 @@
 }
 
 .admin_buttons {
-    font-size: 34px;
+    font-size: 18px;
     margin: 10px;
-    height: 72px !important;
-    width: 80% !important;
+    height: 50px !important;
+    width: 40% !important;
+    background-color: #F1F5F8 !important;
+    color: #354A5F !important;
 }

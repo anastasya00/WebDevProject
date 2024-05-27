@@ -1,0 +1,25 @@
+<div class="container posts">
+
+    <div class="delete_post">
+        <h2>Удалить пост</h2>
+
+        <div class="news_post" *ngFor="let post of posts">
+
+            <div class="news_data">
+                <div>{{ post.created }}</div>
+            </div>
+    
+            <div class="news_text">
+                <div>{{ post.content }}</div>
+            </div>
+            
+            <div class="images">
+                <img class="img" *ngFor="let img of post.images" [src]="img.link">
+            </div>
+    
+        </div>     
+    </div>
+
+    <!-- <div style="height: 100px;"></div> -->
+
+</div>

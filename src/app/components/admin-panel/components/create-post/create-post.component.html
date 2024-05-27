@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div class="create_post">
+        <h2>Создать пост</h2>
+
+        <form class="example-form">
+            <p>
+                <mat-form-field>
+                  <mat-label>{{ currentDate }}</mat-label>
+                  <input matInput [matDatepicker]="dp3" disabled>
+                  <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                  <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                </mat-form-field>
+            </p>
+
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Заголовок</mat-label>
+                  <input matInput placeholder=" " value=" ">
+                </mat-form-field>
+              
+                <mat-form-field class="example-full-width">
+                  <mat-label>Введите текст поста</mat-label>
+                  <textarea matInput placeholder=" " value=" "></textarea>
+                </mat-form-field>
+            </form>
+
+        </form>
+          
+    </div>
+
+</div>
