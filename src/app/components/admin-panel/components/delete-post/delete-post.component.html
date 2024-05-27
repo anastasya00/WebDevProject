@@ -1,9 +1,17 @@
 <div class="container posts">
 
     <div class="delete_post">
+
+        <form [formGroup]="searchForm" class="header_search">
+            <mat-form-field>
+              <mat-label>Поиск по сайту</mat-label>
+              <input #searchInput (input)="searchPosts(searchInput.value)" formControlName="search" matInput>
+            </mat-form-field>
+          </form>
+
         <h2>Удалить пост</h2>
 
-        <div class="news_post" *ngFor="let post of posts">
+        <div class="news_post" *ngFor="let post of filteredPosts">
 
             <div class="news_data">
                 <div>{{ post.created }}</div>

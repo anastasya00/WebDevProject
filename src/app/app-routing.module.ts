@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/admin-panel/admin-panel.module').then((m) => m.AdminPanelModule)
   },
 
-  { path: '**', component: MainPageComponent }
+  { path: '', component: MainPageComponent }
 ];
 
 declarations: [

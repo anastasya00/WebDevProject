@@ -14,7 +14,7 @@ export class NewsComponent implements OnInit {
 
   posts: Post[] = [];
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService) { 
   }
 
   ngOnInit(): void {
