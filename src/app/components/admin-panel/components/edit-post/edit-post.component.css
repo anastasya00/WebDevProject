@@ -81,3 +81,17 @@ a:hover::after {
     width: 100% !important;
 }
 
+button {
+    background-color: #813e3e !important;
+    color: #F1F5F8 !important;
+    height: 40px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 600,
+  'GRAD' 200,
+  'opsz' 48
+}
+

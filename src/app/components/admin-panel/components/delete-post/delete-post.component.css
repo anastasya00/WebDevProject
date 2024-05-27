@@ -80,6 +80,7 @@ a:hover::after {
 .header_search, .header_search mat-form-field {
     width: 100% !important;
 }
+
 button {
     background-color: #813e3e !important;
     color: #F1F5F8 !important;

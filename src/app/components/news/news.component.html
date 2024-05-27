@@ -4,7 +4,7 @@
     <div class="news_post" *ngFor="let post of posts">
 
         <div class="news_data">
-            <div>{{ post.created }}</div>
+            <div>{{ post.created | date: 'dd LLLL yyyy год' }}</div>
         </div>
 
         <div class="news_text">

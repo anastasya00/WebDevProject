@@ -27,6 +27,12 @@ import { ContactComponent } from './components/contact/contact.component';
 import { InfoComponent } from './components/info/info.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import { LOCALE_ID } from '@angular/core';
+
+registerLocaleData(localeRu);
+
 
 @NgModule({
   declarations: [
@@ -58,8 +64,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
-  ],
+    provideAnimationsAsync(),
+    { provide: LOCALE_ID, useValue: 'ru' }
+  ],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

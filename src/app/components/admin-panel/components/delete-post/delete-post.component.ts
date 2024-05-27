@@ -60,7 +60,7 @@ export class DeletePostComponent implements OnInit {
 
   openDialog(postId: number, enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { postId, api: this.api, posts: this.posts },
+      data: { postId, api: this.api },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,

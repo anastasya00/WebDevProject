@@ -13,8 +13,12 @@
 
         <div class="news_post" *ngFor="let post of filteredPosts">
 
-            <div class="news_data">
-                <div>{{ post.created }}</div>
+            <div style="display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; height: 40px;">
+                <button mat-raised-button (click)="openDialog('0ms', '0ms')"><span class="material-symbols-outlined">edit_note</span></button>
+
+                <div class="news_data">
+                    <div>{{ post.created | date: 'dd LLLL yyyy год' }}</div>
+                </div>
             </div>
     
             <div class="news_text">

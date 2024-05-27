@@ -17,7 +17,10 @@ import {
   MatDialogClose,
   MatDialogTitle,
   MatDialogContent,
+  MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { ApiService } from '../../../../core/api/api.service';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-create-post',
@@ -36,7 +39,7 @@ export class CreatePostComponent implements OnInit {
   postForm: FormGroup;
   currentDate: string;
 
-  constructor(private datePipe: DatePipe, public dialog: MatDialog) {
+  constructor(private datePipe: DatePipe, public dialog: MatDialog, public api: ApiService) {
 
     const transformedDate = this.datePipe.transform(new Date(), 'dd.MM.yyyy');
     this.currentDate = transformedDate ? transformedDate : '';
@@ -48,22 +51,33 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openDialog(dateTime: string, postTitle: string, postText: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
+      data: { date: dateTime, title: postTitle, text: postText },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
-  }
-  
+  }  
 }
 
 @Component({
-  selector: 'dialog-animations-example-dialog',
-  templateUrl: 'dialog-animations-example-dialog.html',
+  selector: 'create-posts',
+  templateUrl: 'create-posts.html',
   standalone: true,
   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
 })
 export class DialogAnimationsExampleDialog {
-  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
+  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService) { }
+
+  CreatePost(date: string, title: string, text: string) {
+    this.api.CreatePost(date, title, text).subscribe((response) => {
+      if (response.status === 201) {
+        console.log('Post created successfully:', response.body);
+      } else {
+        console.error('Error creating post:', response.body);
+      }
+    });
+  }
+  
 }

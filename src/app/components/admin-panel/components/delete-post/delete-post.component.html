@@ -17,7 +17,7 @@
                 <button mat-raised-button (click)="openDialog(post.id, '0ms', '0ms')"><span class="material-symbols-outlined">delete</span></button>
 
                 <div class="news_data">
-                    <div>{{ post.created }}</div>
+                    <div>{{ post.created | date: 'dd LLLL yyyy год' }}</div>
                 </div>
             </div>
     
