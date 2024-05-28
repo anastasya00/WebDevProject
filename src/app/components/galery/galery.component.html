@@ -1,10 +1,24 @@
 <div class="container">
 
-    <h2>Галерея</h2>
+    <h2 style="margin-top: 200px;">Галерея</h2>
 
-    <div class="images">
-        <div *ngFor="let image of images">
-            <img [src]="image.link">
-        </div>
+    <div class="card">
+        <p-galleria 
+            [value]="images" 
+            [showItemNavigators]="true" 
+            [showThumbnails]="false" 
+            [showIndicators]="true" 
+            [showIndicatorsOnItem]="true" 
+            [responsiveOptions]="responsiveOptions" 
+            [containerStyle]="{ 'max-width': '1100px', 'margin-top': '2em' }">
+                <ng-template pTemplate="item" let-item>
+                    <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+                </ng-template>
+                <ng-template pTemplate="thumbnail" let-item>
+                    <div class="grid grid-nogutter justify-content-center">
+                        <img [src]="item.thumbnailImageSrc" style="display: block;" />
+                    </div>
+                </ng-template>
+        </p-galleria>
     </div>
 </div>

@@ -3,7 +3,15 @@
     flex-direction: column;
 }
 
-.images {
-    display: flex;
-    flex-direction: row;
+.p-element.ng-tns-c1009483637-21 {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+img {
+    width: 1100px !important;
+    height: 575px !important;
+    object-fit: cover;
+    object-position: center;
 }

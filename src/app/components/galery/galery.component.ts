@@ -1,20 +1,35 @@
-import { Component } from '@angular/core';
-import { Img } from '../../core/models/models';
-import { ApiService } from '../../core/api/api.service';
+import { Component, OnInit } from '@angular/core';
+import { PhotoService } from '../../services/photoservice'; 
+import { GalleriaModule } from 'primeng/galleria';
 
 @Component({
   selector: 'app-galery',
   templateUrl: './galery.component.html',
-  styleUrl: './galery.component.css'
+  styleUrls: ['./galery.component.css']
 })
-export class GaleryComponent {
+export class GaleryComponent implements OnInit {
+  images: any[] | undefined;
 
-  public images: Img[] = [];
+  responsiveOptions: any[] = [
+      {
+          breakpoint: '1024px',
+          numVisible: 5
+      },
+      {
+          breakpoint: '768px',
+          numVisible: 3
+      },
+      {
+          breakpoint: '560px',
+          numVisible: 1
+      }
+  ];
 
-  constructor(private api: ApiService) {
-    this.api.getImages().subscribe(images => {
-      this.images = images;
-    })
+  constructor(private photoService: PhotoService) {}
+
+  ngOnInit() {
+      this.photoService.getImages().subscribe((images) => {
+          this.images = images;
+      });
   }
-
 }

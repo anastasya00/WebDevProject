@@ -30,9 +30,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { LOCALE_ID } from '@angular/core';
+import { GalleriaModule } from 'primeng/galleria';
+import { PhotoService } from './services/photoservice';
+import { CommonModule } from '@angular/common';
 
 registerLocaleData(localeRu);
-
 
 @NgModule({
   declarations: [
@@ -60,11 +62,14 @@ registerLocaleData(localeRu);
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GalleriaModule,
+    CommonModule
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
+    PhotoService,
     { provide: LOCALE_ID, useValue: 'ru' }
   ],  
   bootstrap: [AppComponent]

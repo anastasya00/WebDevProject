@@ -4,11 +4,11 @@ export interface Post {
     content: string;
     created: string;
     images: Img[];
-  }
+}
 
 export interface Img {
     id: number;
     link: string;
     created: string;
-  }
+}
   
