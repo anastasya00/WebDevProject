@@ -1,35 +1,51 @@
 <div class="container posts">
+  <div class="delete_post">
+    <h2>Удалить пост</h2>
 
-    <div class="delete_post">
+    <form [formGroup]="searchForm" class="header_search">
+      <mat-form-field>
+        <mat-label>Поиск по постам</mat-label>
+        <input
+          #searchInput
+          (input)="searchPosts(searchInput.value)"
+          formControlName="search"
+          matInput
+        />
+      </mat-form-field>
+    </form>
+    <ng-container *ngIf="!filteredPosts?.length; else posts">
+        <h3>Загрузка...</h3>
+    </ng-container>
+    <ng-template #posts>
+      <div class="news_post" *ngFor="let post of filteredPosts">
+        <div
+          style="
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+          "
+        >
+          <button mat-raised-button (click)="openDialog(post.id, '0ms', '0ms')">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
 
-        <h2>Удалить пост</h2>
-
-        <form [formGroup]="searchForm" class="header_search">
-            <mat-form-field>
-              <mat-label>Поиск по постам</mat-label>
-              <input #searchInput (input)="searchPosts(searchInput.value)" formControlName="search" matInput>
-            </mat-form-field>
-          </form>
-
-        <div class="news_post" *ngFor="let post of filteredPosts">
-
-            <div style="display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; height: 40px;">
-                <button mat-raised-button (click)="openDialog(post.id, '0ms', '0ms')"><span class="material-symbols-outlined">delete</span></button>
-
-                <div class="news_data">
-                    <div>{{ post.created | date: 'dd LLLL yyyy год' }}</div>
-                </div>
-            </div>
-    
-            <div class="news_text">
-                <div>{{ post.content }}</div>
-            </div>
-            
-            <div class="images">
-                <img class="img" *ngFor="let img of post.images" [src]="img.link">
-            </div>
-    
+          <div class="news_data">
+            <div>{{ post.created | date : "dd LLLL yyyy год" }}</div>
+          </div>
         </div>
-        <div style="height: 100px;"></div> 
-    </div>
+
+        <div class="news_text">
+          <div>{{ post.content }}</div>
+        </div>
+
+        <div class="images">
+          <img class="img" *ngFor="let img of post.images" [src]="img.link" />
+        </div>
+      </div>
+    </ng-template>
+
+    <div style="height: 100px"></div>
+  </div>
 </div>

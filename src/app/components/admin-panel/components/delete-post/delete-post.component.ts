@@ -26,23 +26,16 @@ import { Inject } from '@angular/core';
   templateUrl: './delete-post.component.html',
   styleUrl: './delete-post.component.css'
 })
-export class DeletePostComponent implements OnInit {
+export class DeletePostComponent {
 
   posts: Post[] = [];
-  filteredPosts: Post[] = [];
+  filteredPosts!: Post[];
   searchForm!: FormGroup;
 
-  constructor(public api: ApiService, public dialog: MatDialog) { }
-
-  public searchPosts(value: string) {
-    this.filteredPosts = this.posts.filter(post =>
-					post?.content.toLowerCase().includes(value.toLowerCase())
-				);
-  }
-
-  ngOnInit(): void {
+  constructor(public api: ApiService, public dialog: MatDialog) {
     this.api.getPosts().subscribe(posts => {
       this.posts = posts;
+      this.filteredPosts = this.posts;
       for (let post of this.posts) {
         this.api.getPostImages(post.id).subscribe(images => {
           post.images = images;
@@ -53,9 +46,12 @@ export class DeletePostComponent implements OnInit {
     this.searchForm = new FormGroup({
       search: new FormControl()
     });
+  }
 
-    this.filteredPosts = this.posts;
-    
+  public searchPosts(value: string) {
+    this.filteredPosts = this.posts.filter(post =>
+					post?.content.toLowerCase().includes(value.toLowerCase())
+				);
   }
 
   openDialog(postId: number, enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -78,7 +74,7 @@ export class DialogAnimationsExampleDialog {
   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService) {}
   
   DeletePost(postId: number) {
-    this.api.DeletePost(postId).subscribe(() => {
+    this.api.deletePost(postId).subscribe(() => {
       window.location.reload();
     });
   }  

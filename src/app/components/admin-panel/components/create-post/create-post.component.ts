@@ -71,13 +71,7 @@ export class DialogAnimationsExampleDialog {
   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService) { }
 
   CreatePost(date: string, title: string, text: string) {
-    this.api.CreatePost(date, title, text).subscribe((response) => {
-      if (response.status === 201) {
-        console.log('Post created successfully:', response.body);
-      } else {
-        console.error('Error creating post:', response.body);
-      }
-    });
+    this.api.createPost(date, title, text);
   }
   
 }

@@ -39,6 +39,7 @@ export class EditPostComponent implements OnInit {
   ngOnInit(): void {
     this.api.getPosts().subscribe(posts => {
       this.posts = posts;
+      this.filteredPosts = this.posts;
       for (let post of this.posts) {
         this.api.getPostImages(post.id).subscribe(images => {
           post.images = images;
@@ -49,9 +50,6 @@ export class EditPostComponent implements OnInit {
     this.searchForm = new FormGroup({
       search: new FormControl()
     });
-
-    this.filteredPosts = this.posts;
-    
   }
 
     openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

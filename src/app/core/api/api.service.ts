@@ -36,7 +36,7 @@ export class ApiService {
   }
 
   // Удаление постов
-  public DeletePost(postId: number): Observable<any> {
+  public deletePost(postId: number): Observable<any> {
     const postUrl = `http://localhost:8000/posts/${postId}`;
     const imagesUrl = `http://localhost:8000/posts/${postId}/images`
 
@@ -47,8 +47,8 @@ export class ApiService {
   }
 
   // Создание постов
-  public CreatePost(date: string, title: string, text: string): Observable<any> {
-    return this.http.post(this.backend_url + 'posts', { title, text, date }, { observe: 'response' });
+  public createPost(date: string, title: string, content: string): Observable<any> {
+    return this.http.post(this.backend_url + 'posts', { title, content, date }, { observe: 'response' });
   }
 
 }
