@@ -2,23 +2,26 @@
 
     <h2 style="margin-top: 200px;">Галерея</h2>
 
-    <div class="card">
-        <p-galleria 
-            [value]="images" 
-            [showItemNavigators]="true" 
-            [showThumbnails]="false" 
-            [showIndicators]="true" 
-            [showIndicatorsOnItem]="true" 
-            [responsiveOptions]="responsiveOptions" 
-            [containerStyle]="{ 'max-width': '1100px', 'margin-top': '2em' }">
-                <ng-template pTemplate="item" let-item>
-                    <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
-                </ng-template>
-                <ng-template pTemplate="thumbnail" let-item>
-                    <div class="grid grid-nogutter justify-content-center">
-                        <img [src]="item.thumbnailImageSrc" style="display: block;" />
-                    </div>
-                </ng-template>
-        </p-galleria>
-    </div>
+    <div class="gallery" #lightboxContainer>
+        <div class="image-container" *ngFor="let img of images; let i = index" (click)="openLightbox(i)">
+          <img class="img" [src]="img.link" [alt]="'Image ' + (i + 1)">
+        </div>
+      </div>
+    
+      <div id="lightbox" *ngIf="lightboxVisible">
+        <section><button class="close_btn" mat-raised-button color="primary"><span id="close-btn" #closeBtn (click)="closeLightbox()">&times;</span></button></section>
+    
+        <button class="btn_prev" mat-button color="primary" id="prev-btn" #prevBtn (click)="showPrevImage()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F1F5F8"><path d="M406.67-64-9.67-481l416.34-416.33 72.66 72.66L135.67-481l343.66 343.67L406.67-64Z"/></svg>
+        </button>
+
+        <img id="lightbox-img" [src]="currentImage" alt="lightbox image">
+        <div id="thumbnail-container"></div>
+        
+        <button class="btn_next" mat-button color="primary" id="next-btn" #nextBtn (click)="showNextImage()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F1F5F8"><path d="m308-65.33-72.67-73.34L579-482.33 235.33-826 308-898.67l416.33 416.34L308-65.33Z"/></svg>
+        </button>
+
+      </div>
+
 </div>
