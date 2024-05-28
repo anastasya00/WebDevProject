@@ -17,17 +17,18 @@ import {
   MatDialogClose,
   MatDialogTitle,
   MatDialogContent,
-  MAT_DIALOG_DATA,
+  MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { ApiService } from '../../../../core/api/api.service';
 import { Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.css',
   standalone: true,
-  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatDatepickerModule, MatProgressBarModule, ReactiveFormsModule, MatButtonModule, MatDividerModule, MatIconModule],
+  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatDatepickerModule, MatProgressBarModule, ReactiveFormsModule, MatButtonModule, MatDividerModule, MatIconModule, CommonModule],
   providers: [provideNativeDateAdapter(), DatePipe]
 })
 export class CreatePostComponent implements OnInit {
@@ -53,7 +54,7 @@ export class CreatePostComponent implements OnInit {
 
   openDialog(dateTime: string, postTitle: string, postText: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { date: dateTime, title: postTitle, text: postText },
+      data: { date: dateTime, title: postTitle, text: postText, loadCreatePost: false },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
@@ -65,13 +66,25 @@ export class CreatePostComponent implements OnInit {
   selector: 'create-posts',
   templateUrl: 'create-posts.html',
   standalone: true,
-  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, CommonModule],
 })
 export class DialogAnimationsExampleDialog {
-  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService) { }
+  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService, private dialog: MatDialog) { }
 
-  CreatePost(date: string, title: string, text: string) {
-    this.api.createPost(date, title, text);
+  createPost(date: string, title: string, text: string) {
+    this.api.createPost(date, title, text).subscribe(
+      () => {
+
+        const newDialogRef = this.dialog.open(DialogAnimationsExampleDialog, {
+          data: {loadCreatePost: true },
+          width: '250px'
+        });
+
+        setTimeout(() => {
+          newDialogRef.close();
+        }, 1000);
+      }
+    );
   }
   
 }

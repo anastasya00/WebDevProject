@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Post } from '../../../../core/models/models';
 import { ApiService } from '../../../../core/api/api.service';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,7 @@ import {
   MatDialogClose,
   MatDialogTitle,
   MatDialogContent,
+  MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -26,7 +27,6 @@ export class EditPostComponent implements OnInit {
   posts: Post[] = [];
   filteredPosts: Post[] = [];
   searchForm!: FormGroup;
-
 
   constructor(private api: ApiService, public dialog: MatDialog) { }
 
@@ -52,14 +52,36 @@ export class EditPostComponent implements OnInit {
     });
   }
 
-    openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-      this.dialog.open(DialogAnimationsExampleDialog, {
-        width: '250px',
-        enterAnimationDuration,
-        exitAnimationDuration,
-      });
-    }
+  openDialog(post: Post, enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, {
+      data: { post: post },
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.cancelEdit(post);
+      } else {
+        this.savePost(post);
+      }
+    });
   }
+
+  editPost(post: Post): void {
+    post.isEditing = true;
+  }
+
+  savePost(post: Post): void {
+    post.isEditing = true;
+  }
+
+  cancelEdit(post: Post): void {
+    post.isEditing = false;
+  }
+
+}
 
 @Component({
   selector: 'edit-post',
@@ -68,5 +90,13 @@ export class EditPostComponent implements OnInit {
   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
 })
 export class DialogAnimationsExampleDialog {
-  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
+  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  cancel(): void {
+    this.dialogRef.close(false);
+  }
+
+  save(): void {
+    this.dialogRef.close(true);
+  }
 }

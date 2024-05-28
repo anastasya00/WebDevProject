@@ -38,17 +38,19 @@ export class ApiService {
   // Удаление постов
   public deletePost(postId: number): Observable<any> {
     const postUrl = `http://localhost:8000/posts/${postId}`;
-    const imagesUrl = `http://localhost:8000/posts/${postId}/images`
-
-    const deletePostRequest = this.http.delete<any>(postUrl);
-    const deleteImagesRequest = this.http.delete<any>(imagesUrl);
-
-    return forkJoin([deletePostRequest, deleteImagesRequest]);
+    return this.http.delete<any>(postUrl).pipe(
+      map(response => response.content)
+    );
   }
 
   // Создание постов
   public createPost(date: string, title: string, content: string): Observable<any> {
     return this.http.post(this.backend_url + 'posts', { title, content, date }, { observe: 'response' });
   }
+
+  // Редактирование постов
+  // public editPost(date: string, title: string, content: string): Observable<any> {
+    
+  // }
 
 }

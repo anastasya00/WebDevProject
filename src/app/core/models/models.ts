@@ -4,6 +4,7 @@ export interface Post {
     content: string;
     created: string;
     images: Img[];
+    isEditing: boolean; 
 }
 
 export interface Img {

@@ -1,37 +1,43 @@
 <div class="container posts">
-
     <div class="delete_post">
+      <h2>Редактировать пост</h2>
 
-        <h2>Редактировать пост</h2>
-
-        <form [formGroup]="searchForm" class="header_search">
-            <mat-form-field>
-              <mat-label>Поиск по постам</mat-label>
-              <input #searchInput (input)="searchPosts(searchInput.value)" formControlName="search" matInput>
-            </mat-form-field>
-          </form>
-
-        <div class="news_post" *ngFor="let post of filteredPosts">
-
-            <div style="display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; height: 40px;">
-                <button mat-raised-button (click)="openDialog('0ms', '0ms')"><span class="material-symbols-outlined">edit_note</span></button>
-
-                <div class="news_data">
-                    <div>{{ post.created | date: 'dd LLLL yyyy год' }}</div>
-                </div>
+      <form [formGroup]="searchForm" class="header_search">
+        <mat-form-field>
+          <mat-label>Поиск по постам</mat-label>
+          <input #searchInput (input)="searchPosts(searchInput.value)" formControlName="search" matInput>
+        </mat-form-field>
+      </form>
+  
+      <div class="news_post" *ngFor="let post of filteredPosts">
+        <div style="display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; height: 40px;">
+          <button *ngIf="!post.isEditing" mat-raised-button (click)="editPost(post)"><span class="material-symbols-outlined">edit_note</span></button>
+          <div class="news_data">
+            <div>{{ post.created | date: 'dd LLLL yyyy год' }}</div>
+          </div>
+        </div>
+  
+        <div class="news_text">
+            <div *ngIf="!post.isEditing" class="post_title">
+                {{ post.title }}
             </div>
-    
-            <div class="news_text">
-                <div>{{ post.content }}</div>
-            </div>
-            
-            <div class="images">
-                <img class="img" *ngFor="let img of post.images" [src]="img.link">
-            </div>
-    
-        </div>     
+          <div *ngIf="!post.isEditing">
+            {{ post.content }}
+          </div>
+          <textarea *ngIf="post.isEditing" [(ngModel)]="post.title"></textarea>
+          <textarea *ngIf="post.isEditing" [(ngModel)]="post.content" class="textarea_content"></textarea>
+        </div>
+  
+        <div class="images">
+          <img class="img" *ngFor="let img of post.images" [src]="img.link">
+        </div>
+
+        <div class="button_edit" *ngIf="post.isEditing">
+            <button class="button_edit_cancel" (click)="cancelEdit(post)" mat-raised-button>Отменить</button>
+            <button class="button_edit_save" (click)="openDialog(post, '0ms', '0ms')" mat-raised-button>Сохранить</button>
+        </div>
+      </div>
     </div>
-
+  
     <div style="height: 100px;"></div>
-
-</div>
+  </div>

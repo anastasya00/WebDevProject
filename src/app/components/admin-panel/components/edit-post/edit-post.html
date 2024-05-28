@@ -3,6 +3,6 @@
   Вы уверенны, что хотите отредактировать пост?
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Нет</button>
-  <button mat-button mat-dialog-close cdkFocusInitial>Да</button>
+  <button mat-button mat-dialog-close (click)="cancel()">Нет</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="save()">Да</button>
 </mat-dialog-actions>
