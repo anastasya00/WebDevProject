@@ -78,8 +78,9 @@ export class CreatePostComponent implements OnInit {
   // Загрузка изображений
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
-    const created: string = '2016-01-02T15:04:05+00:00';
-  
+
+    const created: string = this.postForm.get('date')?.value;
+
     if (this.selectedFile) {
       this.fileName = this.selectedFile.name;
   
