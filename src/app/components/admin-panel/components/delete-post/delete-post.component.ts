@@ -74,13 +74,25 @@ export class DialogAnimationsExampleDialog {
   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService) {}
   
   DeletePost(postId: number) {
-    this.api.deleteImagesFromPost(postId).subscribe(() => {
-      console.log('Изображения удалены');
+    this.api.getPostImages(postId).subscribe(images => {
+      if (images) {
+
+      this.api.deleteImagesFromPost(postId).subscribe(() => {
+        console.log('Изображения удалены');
+        this.api.deletePost(postId).subscribe(() => {
+          console.log('Пост удален');
+          window.location.reload();
+        });
+      });
+
+    } else {
+
       this.api.deletePost(postId).subscribe(() => {
         console.log('Пост удален');
         window.location.reload();
       });
+      }
     });
-  }  
-  
-}
+  }
+}  
+

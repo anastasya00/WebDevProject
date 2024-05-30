@@ -15,6 +15,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { text } from 'stream/consumers';
 
 @Component({
   selector: 'app-edit-post',
@@ -28,7 +29,7 @@ export class EditPostComponent implements OnInit {
   filteredPosts: Post[] = [];
   searchForm!: FormGroup;
 
-  constructor(private api: ApiService, public dialog: MatDialog) { }
+  constructor(public api: ApiService, public dialog: MatDialog) { }
 
   public searchPosts(value: string) {
     this.filteredPosts = this.posts.filter(post =>
@@ -54,7 +55,7 @@ export class EditPostComponent implements OnInit {
 
   openDialog(post: Post, enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { post: post },
+      data: { postId: post.id, title: post.title, content: post.content, created: post.created },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
@@ -90,13 +91,16 @@ export class EditPostComponent implements OnInit {
   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
 })
 export class DialogAnimationsExampleDialog {
-  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService) { }
 
-  cancel(): void {
+  cancel() {
     this.dialogRef.close(false);
   }
 
-  save(): void {
-    this.dialogRef.close(true);
+  save() {
+    this.api.editPost(this.data.created, this.data.title, this.data.content, this.data.postId).subscribe (
+      () => {
+        window.location.reload();
+      });
   }
 }
