@@ -144,7 +144,7 @@ export class CreatePostComponent implements OnInit {
   cancelUpload() {
     this.uploadSub?.unsubscribe();
     this.reset();
-    this.api.deleteImg(this.imageId);
+    this.api.deleteImage(this.imageId);
   }
 
   reset() {
@@ -165,7 +165,10 @@ export class DialogAnimationsExampleDialog {
   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService, private dialog: MatDialog) { }
 
   deleteImg(imgId: number) {
-    this.api.deleteImg(imgId);
+    this.api.deleteImage(imgId).subscribe(
+      () => {
+        console.log('IMG удален:', imgId);
+      });
   }
 
   createPost(title: string, text: string, date: string, imgId: number) {
