@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Img, Post } from '../models/models';
-import { Observable, map } from 'rxjs';
+import { Observable, from, map, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
+import { finalize } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -44,8 +45,8 @@ export class ApiService {
   }
 
   // Создание постов
-  public createPost(date: string, title: string, content: string): Observable<any> {
-    return this.http.post(this.backend_url + 'posts', { title, content, date }, { observe: 'response' });
+  public createPost(created: string, title: string, content: string): Observable<any> {
+    return this.http.post(this.backend_url + 'posts', { title, content, created });
   }
 
   // Редактирование постов

@@ -32,7 +32,23 @@
           ></textarea>
         </mat-form-field>
 
-        <button mat-raised-button (click)="openDialog('2023-05-22T15:04:05Z', postForm.value.title, postForm.value.text, '0ms', '0ms')">Создать</button>
+
+
+        <input formControlName="loadImg" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
+
+        <div class="file-upload">{{fileName || "No file uploaded yet."}}
+          <button style="width: 45px !important; height: 45px !important; margin-left: 20px;" mat-mini-fab color="primary" class="upload-btn"(click)="fileUpload.click()"><mat-icon>attach_file</mat-icon></button>
+        </div>
+
+        <div class="progress">
+          <mat-progress-bar class="progress-bar" mode="determinate"[value]="uploadProgress" *ngIf="uploadProgress"></mat-progress-bar>
+          <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
+        </div>
+
+
+
+
+        <button mat-raised-button (click)="openDialog('0ms', '0ms')">Создать</button>
 
       </form>
   </div>

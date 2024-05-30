@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -22,6 +22,8 @@ import {
 import { ApiService } from '../../../../core/api/api.service';
 import { Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Subscription, finalize } from 'rxjs';
 
 @Component({
   selector: 'app-create-post',
@@ -33,6 +35,8 @@ import { CommonModule } from '@angular/common';
 })
 export class CreatePostComponent implements OnInit {
 
+  @Input()
+
   ngOnInit() {
     this.postForm.get('date')?.disable();
   }
@@ -40,7 +44,15 @@ export class CreatePostComponent implements OnInit {
   postForm: FormGroup;
   currentDate: string;
 
-  constructor(private datePipe: DatePipe, public dialog: MatDialog, public api: ApiService) {
+  requiredFileType: string = 'image/png, image/jpg';
+
+  fileName = '';
+  uploadProgress: number = 0;
+  uploadSub: Subscription | null = null;
+  uploadedImageLink: string | null = null;
+  selectedFile: File | null = null;
+
+  constructor(private datePipe: DatePipe, public dialog: MatDialog, public api: ApiService, private http: HttpClient) { 
 
     const transformedDate = this.datePipe.transform(new Date(), 'dd.MM.yyyy');
     this.currentDate = transformedDate ? transformedDate : '';
@@ -48,18 +60,84 @@ export class CreatePostComponent implements OnInit {
     this.postForm = new FormGroup({
       date: new FormControl(),
       title: new FormControl('', [Validators.required]),
-      text: new FormControl('', [Validators.required])
+      text: new FormControl('', [Validators.required]),
+      loadImg: new FormControl()
     });
   }
 
-  openDialog(dateTime: string, postTitle: string, postText: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { date: dateTime, title: postTitle, text: postText, loadCreatePost: false },
+      data: { date: this.postForm.value.date, title: this.postForm.value.title, text: this.postForm.value.text },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
-  }  
+  }
+
+  // Загрузка изображений
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    const created: string = '2023-05-22T15:04:05Z';
+  
+    if (this.selectedFile) {
+      this.fileName = this.selectedFile.name;
+  
+      this.base64(this.selectedFile, (coolFile) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8000/images');
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            this.uploadedImageLink = JSON.parse(xhr.responseText).url;
+          }
+        };
+        xhr.upload.onprogress = (event) => {
+          if (event.lengthComputable) {
+            this.uploadProgress = Math.round(100 * (event.loaded / event.total));
+          }
+        };
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({ file: coolFile.base64, created }));
+      });
+    }
+  }
+
+  
+  base64(file: File, callback: (coolFile: any) => void) {
+    const coolFile = {
+      base64: '',
+      filetype: '',
+      size: 0,
+      filename: ''
+    };
+  
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target) {
+        const base64 = btoa(e.target.result as string);
+        coolFile.base64 = base64;
+        coolFile.filetype = file.type;
+        coolFile.size = file.size;
+        coolFile.filename = file.name;
+        callback(coolFile);
+      } else {
+        console.error("Error reading file: e.target is null");
+      }
+    };
+  
+    reader.readAsBinaryString(file);
+  }
+
+  cancelUpload() {
+    this.uploadSub?.unsubscribe();
+    this.reset();
+  }
+
+  reset() {
+    this.uploadProgress = 0;
+    this.uploadSub = null;
+    this.fileName = '';
+  }
+
 }
 
 @Component({
@@ -86,5 +164,4 @@ export class DialogAnimationsExampleDialog {
       }
     );
   }
-  
 }

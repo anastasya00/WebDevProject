@@ -34,3 +34,23 @@ button {
   'GRAD' 200,
   'opsz' 48
 }
+
+.file-input {
+  display: none;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.progress {
+    display: flex;
+    align-items: center;
+}
+
+.mat-icon {
+    margin: 10px;
+}
