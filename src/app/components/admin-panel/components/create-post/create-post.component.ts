@@ -144,7 +144,18 @@ export class CreatePostComponent implements OnInit {
   cancelUpload() {
     this.uploadSub?.unsubscribe();
     this.reset();
-    this.api.deleteImage(this.imageId);
+
+    if (this.imageId) {
+      this.api.deleteImage(this.imageId).subscribe(
+        () => {
+          console.log('IMG удален:', this.imageId);
+          this.imageId = null;
+        },
+        (error) => {
+          console.error('Ошибка при удалении изображения:', error);
+        }
+      );
+    }
   }
 
   reset() {
@@ -164,11 +175,14 @@ export class CreatePostComponent implements OnInit {
 export class DialogAnimationsExampleDialog {
   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService, private dialog: MatDialog) { }
 
-  deleteImg(imgId: number) {
-    this.api.deleteImage(imgId).subscribe(
-      () => {
-        console.log('IMG удален:', imgId);
-      });
+  deleteImg() {
+    if (this.data.imgId) {
+      this.api.deleteImage(this.data.imgId).subscribe(
+        () => {
+          console.log('IMG удален:', this.data.imgId);
+          this.data.imgId = null;
+        });
+    }
   }
 
   createPost(title: string, text: string, date: string, imgId: number) {

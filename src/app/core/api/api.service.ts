@@ -56,9 +56,9 @@ export class ApiService {
   }
 
   // Удаление отдельного изображения
-  public deleteImage(imageId: number): Observable<any> {
+  deleteImage(imageId: number): Observable<any> {
     console.log('deleteImage вызвана для imageId:', imageId);
-
+  
     const imageUrl = `http://localhost:8000/images/${imageId}`;
     return this.http.delete<any>(imageUrl).pipe(
       map(response => response.content)
