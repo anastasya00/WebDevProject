@@ -68,7 +68,7 @@ export class CreatePostComponent implements OnInit {
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { title: this.postForm.value.title, text: this.postForm.value.text, date: '2016-01-02T15:04:05+00:00', imgId: this.imageId },
+      data: { title: this.postForm.value.title, text: this.postForm.value.text, date: new Date(), imgId: this.imageId },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
@@ -79,7 +79,7 @@ export class CreatePostComponent implements OnInit {
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
 
-    const created: string = this.postForm.get('date')?.value;
+    const created = new Date();
 
     if (this.selectedFile) {
       this.fileName = this.selectedFile.name;

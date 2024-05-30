@@ -55,7 +55,7 @@ export class EditPostComponent implements OnInit {
 
   openDialog(post: Post, enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { postId: post.id, title: post.title, content: post.content, created: post.created },
+      data: { postId: post.id, title: post.title, content: post.content, created: new Date() },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
