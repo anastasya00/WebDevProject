@@ -22,8 +22,8 @@ import {
 import { ApiService } from '../../../../core/api/api.service';
 import { Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Subscription, finalize } from 'rxjs';
+import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
+import { EMPTY, Subscription, finalize, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-create-post',
@@ -51,6 +51,7 @@ export class CreatePostComponent implements OnInit {
   uploadSub: Subscription | null = null;
   uploadedImageLink: string | null = null;
   selectedFile: File | null = null;
+  imageId: any;
 
   constructor(private datePipe: DatePipe, public dialog: MatDialog, public api: ApiService, private http: HttpClient) { 
 
@@ -67,7 +68,7 @@ export class CreatePostComponent implements OnInit {
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { date: this.postForm.value.date, title: this.postForm.value.title, text: this.postForm.value.text },
+      data: { title: this.postForm.value.title, text: this.postForm.value.text, date: '2016-01-02T15:04:05+00:00', imgId: this.imageId },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
@@ -77,26 +78,39 @@ export class CreatePostComponent implements OnInit {
   // Загрузка изображений
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
-    const created: string = '2023-05-22T15:04:05Z';
+    const created: string = '2016-01-02T15:04:05+00:00';
   
     if (this.selectedFile) {
       this.fileName = this.selectedFile.name;
   
       this.base64(this.selectedFile, (coolFile) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:8000/images');
-        xhr.onload = () => {
-          if (xhr.status >= 200 && xhr.status < 300) {
-            this.uploadedImageLink = JSON.parse(xhr.responseText).url;
+        const file = coolFile.base64;
+  
+        this.uploadSub = this.http.post('http://localhost:8000/images', { file, created }, {
+          reportProgress: true,
+          observe: 'events',
+        })
+        .pipe(
+          switchMap((event: HttpEvent<any>) => {
+            if (event.type === HttpEventType.UploadProgress) {
+              if (event.total) {
+                this.uploadProgress = Math.round(100 * (event.loaded / event.total));
+              }
+            } else if (event.type === HttpEventType.Response) {
+              this.imageId = event.body.id;
+              return of(this.imageId);
+            }
+            return EMPTY;
+          })
+        )
+        .subscribe(
+          (imageId) => {
+            console.log('Image ID IMG:', imageId); 
+          },
+          (error) => {
+            console.error('Error uploading image:', error); 
           }
-        };
-        xhr.upload.onprogress = (event) => {
-          if (event.lengthComputable) {
-            this.uploadProgress = Math.round(100 * (event.loaded / event.total));
-          }
-        };
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({ file: coolFile.base64, created }));
+        );
       });
     }
   }
@@ -130,6 +144,7 @@ export class CreatePostComponent implements OnInit {
   cancelUpload() {
     this.uploadSub?.unsubscribe();
     this.reset();
+    this.api.deleteImg(this.imageId);
   }
 
   reset() {
@@ -149,8 +164,12 @@ export class CreatePostComponent implements OnInit {
 export class DialogAnimationsExampleDialog {
   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any, public api: ApiService, private dialog: MatDialog) { }
 
-  createPost(date: string, title: string, text: string) {
-    this.api.createPost(date, title, text).subscribe(
+  deleteImg(imgId: number) {
+    this.api.deleteImg(imgId);
+  }
+
+  createPost(title: string, text: string, date: string, imgId: number) {
+    this.api.createPost(title, text, date, imgId).subscribe(
       () => {
 
         const newDialogRef = this.dialog.open(DialogAnimationsExampleDialog, {

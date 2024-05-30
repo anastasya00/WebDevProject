@@ -32,8 +32,6 @@
           ></textarea>
         </mat-form-field>
 
-
-
         <input formControlName="loadImg" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
 
         <div class="file-upload">{{fileName || "No file uploaded yet."}}
@@ -45,10 +43,7 @@
           <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
         </div>
 
-
-
-
-        <button mat-raised-button (click)="openDialog('0ms', '0ms')">Создать</button>
+   <button mat-raised-button (click)="openDialog('0ms', '0ms')">Создать</button>
 
       </form>
   </div>

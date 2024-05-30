@@ -28,7 +28,7 @@ export class ApiService {
     );
   }
 
-  // Связывание постов с изображениями по id
+  // Получение постов с изображениями по id
   public getPostImages(postId: number): Observable<Img[]> {
     const url = `http://localhost:8000/posts/${postId}/images`;
     return this.http.get<any>(url).pipe(
@@ -44,9 +44,22 @@ export class ApiService {
     );
   }
 
+  // Удаление изображений
+  public deleteImg(imgId: number): Observable<any> {
+    console.log("IMG ID FOR DELETE:", imgId)
+    return this.http.delete(`http://localhost:8000/images/${imgId}`);
+  }
+
   // Создание постов
-  public createPost(created: string, title: string, content: string): Observable<any> {
-    return this.http.post(this.backend_url + 'posts', { title, content, created });
+  public createPost(title: string, content: string, created: string, imgId: number): Observable<any> {
+    return this.http.post(this.backend_url + 'posts', { title, content, created })
+      .pipe(
+        switchMap((response: any) => {
+          const postId = response.id; 
+          
+          return this.http.post(`http://localhost:8000/posts/${postId}/images/${imgId}`, {}); 
+        })
+      );
   }
 
   // Редактирование постов
