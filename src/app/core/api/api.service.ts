@@ -122,6 +122,7 @@ export class ApiService {
                 finalize(() => {
                   console.log('Пост пересоздан');
                   console.log('IDs изображений:', imageIds);
+                  window.location.reload();
                   this.postID = null;
                 })
               );
