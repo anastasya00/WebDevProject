@@ -12,6 +12,7 @@ import { throwError } from 'rxjs';
 export class AdminAuthorizationComponent {
   hide = true;
   loginForm: FormGroup;
+  flag = false;
 
   constructor(private router: Router, private authService: AuthService) {
     this.loginForm = new FormGroup({
@@ -26,13 +27,14 @@ export class AdminAuthorizationComponent {
         next: (loginStatus) => {
           if (loginStatus) {
             this.router.navigate(['admin']);
+            this.flag = false;
           } else {
+            this.flag = true;
             this.router.navigate(['admin-authorization']);
           }
         },
         error: (err) => {
-          alert(err.message);
-          return throwError(() => new Error('Failed Login'));
+          alert(err.message); 
         }
       });
     }
