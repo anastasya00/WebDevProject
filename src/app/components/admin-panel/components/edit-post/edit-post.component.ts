@@ -55,7 +55,7 @@ export class EditPostComponent implements OnInit {
 
   openDialog(post: Post, enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { postId: post.id, title: post.title, content: post.content, created: new Date() },
+      data: { postId: post.id, title: post.title, content: post.content },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
@@ -98,7 +98,7 @@ export class DialogAnimationsExampleDialog {
   }
 
   save() {
-    this.api.editPost(this.data.created, this.data.title, this.data.content, this.data.postId).subscribe (
+    this.api.editPost(this.data.title, this.data.content, this.data.postId).subscribe (
       () => {
         window.location.reload();
       });

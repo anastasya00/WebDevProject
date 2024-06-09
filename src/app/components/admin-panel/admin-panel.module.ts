@@ -18,6 +18,11 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { authActivateGuard } from '../../guards/auth-activate.guard';
 
 @NgModule({
   declarations: [

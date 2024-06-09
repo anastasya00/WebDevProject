@@ -1,14 +1,20 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {catchError, Observable, of, throwError} from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { Observable, catchError, of, throwError } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router) {
-  }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    @Inject(JwtHelperService) private jwtHelper: JwtHelperService
+  ) {}
 
   setToken(token: string) {
     localStorage.setItem('token', token);
@@ -17,20 +23,33 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('token');
   }
-
+  
   isLoggedIn() {
-    return this.getToken() !== null;
+    const token = this.getToken();
+    if (token) {
+      return !this.jwtHelper.isTokenExpired(token);
+    }
+    return false;
   }
 
-  login(userInfo: {email: string, password: string}): Observable<string | boolean> {
-    if (userInfo.email === 'admin@admin.ru' && userInfo.password === 'Admin12@'){
-      this.setToken('alksflkgsklgjslkjffksdgjnsadgskmg')
-      return of(true)
-    }
-    return throwError(() => new Error('Failed Login'))
+  login(userInfo: any): Observable<any> {
+    return this.http.post<any>('http://localhost:8000/login', userInfo)
+      .pipe(
+        map((response: any) => {
+          console.log("LOGIN STATUS: ", response.status)
+  
+          if (response.status === 'OK') {
+            this.setToken(response.access_token);
+            return true;
+          } else {
+            return false;
+          }
+        })
+      );
   }
 
   logout(){
-    this.router.navigate(['login'])
+    this.router.navigate(['admin-authorization'])
   }
+
 }

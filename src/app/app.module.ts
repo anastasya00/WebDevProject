@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/UI/header/header.component';
@@ -63,12 +65,24 @@ registerLocaleData(localeRu);
     ReactiveFormsModule,
     HttpClientModule,
     GalleriaModule,
-    CommonModule
+    CommonModule,
+    BrowserModule
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    { provide: LOCALE_ID, useValue: 'ru' }
+    provideHttpClient(withFetch()),
+    { provide: LOCALE_ID, useValue: 'ru' },
+    JwtHelperService,
+    {
+      provide: JWT_OPTIONS, 
+      useValue: {
+        tokenGetter: () => {
+
+          return localStorage.getItem('token'); 
+        }
+      }
+    }
   ],  
   bootstrap: [AppComponent]
 })

@@ -68,7 +68,7 @@ export class CreatePostComponent implements OnInit {
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
-      data: { title: this.postForm.value.title, text: this.postForm.value.text, date: new Date(), imgId: this.imageId },
+      data: { title: this.postForm.value.title, text: this.postForm.value.text, imgId: this.imageId },
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
@@ -77,6 +77,7 @@ export class CreatePostComponent implements OnInit {
 
   // Загрузка изображений
   onFileSelected(event: any) {
+    const headers = { 'Authorization': 'BEARER ' + localStorage.getItem('token') };
     this.selectedFile = event.target.files[0];
 
     const created = new Date();
@@ -90,6 +91,7 @@ export class CreatePostComponent implements OnInit {
         this.uploadSub = this.http.post('http://localhost:8000/images', { file, created }, {
           reportProgress: true,
           observe: 'events',
+          headers
         })
         .pipe(
           switchMap((event: HttpEvent<any>) => {
@@ -186,8 +188,8 @@ export class DialogAnimationsExampleDialog {
     }
   }
 
-  createPost(title: string, text: string, date: string, imgId: number) {
-    this.api.createPost(title, text, date, imgId).subscribe(
+  createPost(title: string, text: string, imgId: number) {
+    this.api.createPost(title, text, imgId).subscribe(
       () => {
 
         const newDialogRef = this.dialog.open(DialogAnimationsExampleDialog, {

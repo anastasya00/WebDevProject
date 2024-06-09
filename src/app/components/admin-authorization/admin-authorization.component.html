@@ -4,15 +4,13 @@
     <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input formControlName="email" matInput>
-            <p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"><small>Email is required</small></p>
+            <input formControlName="login" matInput>
         </mat-form-field>
     
         <div class="example-container">
             <mat-form-field>
                 <mat-label>Password</mat-label>
                 <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
-                <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"><small>Password is required: не менее 8 символов, хотя бы одна заглавная английская буква, хотя бы одна строчная английская буква, хотя бы одна цифра, хотя бы один специальный символ.</small></p>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
